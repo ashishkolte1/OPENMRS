@@ -1,0 +1,48 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class OpenMRS1 {
+	
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		String chromepath = "C:\\chromedriver\\chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", chromepath);
+		WebDriver  driver=new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.get("https://demo.openmrs.org/openmrs/login.htm");
+		Thread.sleep(1000);
+		WebElement us=driver.findElement(By.id("username"));
+		us.sendKeys("admin");
+		//Thread.sleep(1000);
+		WebElement PW=driver.findElement(By.id("password"));
+		PW.sendKeys("Admin123");
+		WebElement lc=driver.findElement(By.id("Inpatient Ward"));
+		lc.click();
+		//Thread.sleep(1000);
+		WebElement lg=driver.findElement(By.id("loginButton"));
+		lg.click();
+		WebElement rg=driver.findElement(By.id("referenceapplication-registrationapp-registerPatient-homepageLink-referenceapplication-registrationapp-registerPatient-homepageLink-extension"));
+		rg.click();
+		//Thread.sleep(1000);
+		WebElement gv=driver.findElement(By.name("givenName"));
+		gv.sendKeys("ASHISH");
+		//Thread.sleep(1000);
+		WebElement fn=driver.findElement(By.name("familyName"));
+		fn.sendKeys("Kolte");
+		WebElement nb=driver.findElement(By.id("next-button"));
+		nb.click();
+		WebElement ml=driver.findElement(By.tagName("What's the patient's gender?"));
+		ml.click();
+		WebElement nb1=driver.findElement(By.id("next-button"));
+		nb1.click();
+		Thread.sleep(5000);
+        driver.close();
+	}
+
+}
